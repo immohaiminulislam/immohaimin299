@@ -1,0 +1,124 @@
+import React, { useEffect, useState } from 'react';
+import { Redirect } from 'react-router-dom';
+
+const FarmerDashboard = () => {
+  const [seller, setSeller] = useState(null);
+
+  useEffect(() => {
+    const fetchSeller = async () => {
+      try {
+        const response = await fetch('/api/seller');
+        const data = await response.json();
+        setSeller(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchSeller();
+  }, []);
+
+  if (!seller) {
+    return <Redirect to="/sellerloginpanel" />;
+  }
+
+  return (
+    <main id="main">
+      <section id="cta" className="cta">
+        <div className="container">
+          <div className="text-center" data-aos="zoom-in">
+            <br />
+            <br />
+            <h3>Farmer Dashboard</h3>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="contact">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12" data-aos="fade-up" data-aos-delay="100">
+              <div className="info mt-4">
+                <form method="post" action="" name="frmcstview">
+                  <table
+                    className="table table-striped table-bordered"
+                    style={{ width: '100%' }}
+                    className="datatable"
+                  >
+                    <tbody>
+                      <tr>
+                        <th width="236" height="34" align="right">
+                          <strong>Your Name:</strong>
+                        </th>
+                        <td width="874">{seller.name}</td>
+                      </tr>
+                      <tr>
+                        <th height="48" align="right">
+                          <strong>Your Address:</strong>
+                        </th>
+                        <td>
+                          {seller.address}
+                          <br />
+                          {seller.city}
+                          <br />
+                          {seller.pincode}
+                          <br />
+                          {seller.state}
+                        </td>
+                      </tr>
+                      <tr>
+                        <th height="39" align="left">
+                          <strong>Contact Number:</strong>
+                        </th>
+                        <td>{seller.contactNumber}</td>
+                      </tr>
+                      <tr>
+                        <th height="35" align="left">
+                          <strong>Mobile Number:</strong>
+                        </th>
+                        <td>{seller.mobileNumber}</td>
+                      </tr>
+                      <tr>
+                        <th height="39" align="left">
+                          <strong>Email ID:</strong>
+                        </th>
+                        <td>{seller.email}</td>
+                      </tr>
+                      <tr>
+                        <th height="33" align="left">
+                          <strong>Bank Details:</strong>
+                        </th>
+                        <td>
+                          Account No.: {seller.bankAccountNumber}
+                          <br />
+                          Bank IFSC Code: {seller.bankIFSC}
+                          <br />
+                          Bank Name: {seller.bankName}
+                          <br />
+                          Branch: {seller.bankBranch} <br />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col-lg-12" data-aos="fade-up" data-aos-delay="100">
+              <div className="info mt-4">
+                <header>
+                  <h2>Worker Request Calendar</h2>
+                </header>
+                {/* Calendar code goes here */}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+};
+
+export default FarmerDashboard;

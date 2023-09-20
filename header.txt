@@ -1,0 +1,324 @@
+import React from 'react';
+
+class AgricultureManagementSystem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dt: '',
+      categories: [],
+      activeCategory: '',
+      customerid: '',
+      sellerid: '',
+      workerid: '',
+      adminid: ''
+    };
+  }
+
+  componentDidMount() {
+    this.getDate();
+    this.getCategories();
+    this.checkUserSession();
+  }
+
+  getDate = () => {
+    const date = new Date();
+    const formattedDate = date.toISOString().split('T')[0];
+    this.setState({ dt: formattedDate });
+  };
+
+  getCategories = () => {
+    // Make an API call to fetch categories from the server
+    // Set the categories in the state
+  };
+
+  checkUserSession = () => {
+    // Make an API call to check if the user is logged in
+    // Set the user id in the state based on the session
+  };
+
+  render() {
+    const { dt, categories, activeCategory, customerid, sellerid, workerid, adminid } = this.state;
+
+    return (
+      <div>
+        <header id="header" className="fixed-top d-flex align-items-center">
+          <div className="container">
+            <div className="header-container d-flex align-items-center">
+              <div className="logo mr-auto">
+                <h1 className="text-light">
+                  <a href="index.php">
+                    <span>Agriculture Management System</span>
+                  </a>
+                </h1>
+              </div>
+
+              <nav className="nav-menu d-none d-lg-block">
+                <ul>
+                  <li className={basename(window.location.pathname) === 'index.php' ? 'active' : ''}>
+                    <a className="nav-link scrollto" href="#services">
+                      Services
+                    </a>
+                  </li>
+                  <li>
+                    <a href="displayworkers.php">Hire</a>
+                  </li>
+                  <li className={basename(window.location.pathname) === 'displaysales.php' ? 'active' : ''}>
+                    <a href="displaysales.php" onClick={() => (window.location = 'displaysales.php')}>
+                      Products
+                    </a>
+                    <ul>
+                      {categories.map((category) => (
+                        <li key={category.category_id}>
+                          <a
+                            href={`displaysales.php?category_id=${category.category_id}&category=${category.category}`}
+                            onClick={() =>
+                              (window.location = `displaysales.php?category_id=${category.category_id}&category=${category.category}`)
+                            }
+                          >
+                            {category.category}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+
+                  {customerid && (
+                    <li className={basename(window.location.pathname) === 'customerpanel.php' ? 'active' : ''}>
+                      <a href="">My Account</a>
+                      <ul>
+                        <li>
+                          <a href="customerpanel.php">Customer Panel</a>
+                        </li>
+                        <li>
+                          <a href="viewpurchaserequest.php">View Farm Produce Purchase request</a>
+                        </li>
+                        <li>
+                          <a href="viewcstpurchaseorder.php">View Farm Produce Purchase Order</a>
+                        </li>
+                        <li>
+                          <a href="customerUpdate.php">Update Profile</a>
+                        </li>
+                        <li>
+                          <a href="Customerchngpassword.php">Change Password</a>
+                        </li>
+                        <li>
+                          <a href="logout.php">Logout</a>
+                        </li>
+                      </ul>
+                    </li>
+                  )}
+
+                  {sellerid && (
+                    <li className={basename(window.location.pathname) === 'sellerpanel.php' ? 'active' : ''}>
+                      <a href="">My Account</a>
+                      <ul>
+                        <li>
+                          <a href="sellerpanel.php">Farmer Panel</a>
+                        </li>
+
+                        <li className="drop-down">
+                          <a href="#">My Profile</a>
+                          <ul>
+                            <li>
+                              <a href="sellerprofile.php">Update Profile</a>
+                            </li>
+                            <li>
+                              <a href="Sellerchngpassword.php">Change Password</a>
+                            </li>
+                          </ul>
+                        </li>
+
+                        <li className="drop-down">
+                          <a href="#">Produce</a>
+                          <ul>
+                            <li>
+                              <a href="Product.php">Put Your Produce On Sale</a>
+                            </li>
+                            <li>
+                              <a href="viewProduct.php">View Your Produce On Sale</a>
+                            </li>
+                          </ul>
+                        </li>
+
+                        <li className="drop-down">
+                          <a href="#">Farm Sales Report</a>
+                          <ul>
+                            <li>
+                              <a href="viewsellerpurchaserequest.php">View Purchase Request</a>
+                            </li>
+                            <li>
+                              <a href="viewpurchaseorder.php">View Purchase Order</a>
+                            </li>
+                          </ul>
+                        </li>
+
+                        <li className="drop-down">
+                          <a href="#">Hire details</a>
+                          <ul>
+                            <li>
+                              <a href="viewworkerrequest.php">View Hired Worker</a>
+                            </li>
+                          </ul>
+                        </li>
+
+                        <li>
+                          <a href="logout.php">Logout</a>
+                        </li>
+                      </ul>
+                    </li>
+                  )}
+
+                  {workerid && (
+                    <li className={basename(window.location.pathname) === 'workerpanel.php' ? 'active' : ''}>
+                      <a href="">My Account</a>
+                      <ul>
+                        <li>
+                          <a href="workerpanel.php">My Profile</a>
+                        </li>
+                        <li>
+                          <a href="workerprofile.php">Update Profile</a>
+                        </li>
+                        <li>
+                          <a href="Workerchngpassword.php">Change Password</a>
+                        </li>
+                        <li>
+                          <a href="viewworkerrequest.php">View Your Jobs</a>
+                        </li>
+                        <li>
+                          <a href="workerpanel.php?workschedule=set">Work Schedule</a>
+                        </li>
+                        <li>
+                          <a href="logout.php">Logout</a>
+                        </li>
+                      </ul>
+                    </li>
+                  )}
+
+                  {adminid && (
+                    <li className={basename(window.location.pathname) === 'adminpanel.php' ? 'active' : ''}>
+                      <a href="">My Account</a>
+                      <ul>
+                        <li>
+                          <a href="adminpanel.php">Admin Panel</a>
+                        </li>
+
+                        <li className="drop-down">
+                          <a href="#">Report</a>
+                          <ul>
+                            <li>
+                              <a href="viewcustomerReg.php">Customer Report</a>
+                            </li>
+                            <li>
+                              <a href="viewseller.php">Farmers Report</a>
+                            </li>
+                            <li>
+                              <a href="viewSellingProduce.php">Farmers Produce Report</a>
+                            </li>
+                            <li>
+                              <a href="viewadminpurchaserequest.php">Produce Purchase Request</a>
+                            </li>
+                            <li>
+                              <a href="viewpurchasereport.php">Produce Billing Report</a>
+                            </li>
+                          </ul>
+                        </li>
+
+                        <li className="drop-down">
+                          <a href="#">Market settings</a>
+                          <ul>
+                            <li>
+                              <a href="category.php?cattype=Produce">Add Produce category</a>
+                            </li>
+                            <li>
+                              <a href="viewcategory.php?cattype=Produce">View Produce category</a>
+                            </li>
+                            <li>
+                              <a href="Produce.php">Add Produce types</a>
+                            </li>
+                            <li>
+                              <a href="viewProduce.php">View Produce types</a>
+                            </li>
+                          </ul>
+                        </li>
+
+                        <li className="drop-down">
+                          <a href="#">Worker</a>
+                          <ul>
+                            <li>
+                              <a href="viewworker.php">View Worker</a>
+                            </li>
+                            <li>
+                              <a href="viewworkerrequest.php">View Worker Request</a>
+                            </li>
+                          </ul>
+                        </li>
+
+                        <li className="drop-down">
+                          <a href="#">Settings</a>
+                          <ul>
+                            <li>
+                              <a href="city.php">Add City</a>
+                            </li>
+                            <li>
+                              <a href="viewcity.php">View City</a>
+                            </li>
+                            <li>
+                              <a href="state.php">Add State</a>
+                            </li>
+                            <li>
+                              <a href="viewstate.php">View State</a>
+                            </li>
+                            <li>
+                              <a href="chngadminpassword.php">Change My Password</a>
+                            </li>
+                          </ul>
+                        </li>
+
+                        <li>
+                          <a href="logout.php">Logout</a>
+                        </li>
+                      </ul>
+                    </li>
+                  )}
+
+                  {!customerid && !sellerid && !workerid && !adminid && (
+                    <li className="drop-down">
+                      <a href="">My Account</a>
+                      <ul>
+                        <li>
+                          <a href="customerreglogin.php">As Customer</a>
+                        </li>
+                        <li>
+                          <a href="farmerreglogin.php">As Farmer</a>
+                        </li>
+                        <li>
+                          <a href="workerreglogin.php">As Worker</a>
+                        </li>
+                      </ul>
+                    </li>
+                  )}
+
+                  <li>
+                    <a className="nav-link scrollto" href="#team">
+                      Team
+                    </a>
+                  </li>
+                  <li>
+                    <a className="nav-link scrollto" href="#about">
+                      About
+                    </a>
+                  </li>
+                  <li>
+                    <a href="contact.php">Contact</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </header>
+      </div>
+    );
+  }
+}
+
+export default AgricultureManagementSystem;

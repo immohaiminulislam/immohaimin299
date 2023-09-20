@@ -1,0 +1,17 @@
+import React from 'react';
+
+class Logout extends React.Component {
+  componentDidMount() {
+    if (!sessionStorage.getItem('session')) {
+      sessionStorage.setItem('session', 'true');
+    }
+    sessionStorage.clear();
+    window.location.href = 'index.php';
+  }
+
+  render() {
+    return null;
+  }
+}
+
+export default Logout;

@@ -1,0 +1,185 @@
+import React from 'react';
+import Header from './header';
+import Footer from './footer';
+
+const App = () => {
+  return (
+    <div>
+      <Header />
+      <section id="hero">
+        <div className="container text-center position-relative">
+          <h1>Agriculture Management System</h1>
+          <br />
+          <br />
+          <a href="customerreglogin.php" className="btn-get-started scrollto">Get Started As a Customer</a>
+        </div>
+      </section>
+      <main id="main">
+        <section id="clients" className="clients">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-2 col-md-4 col-6 d-flex align-items-center"></div>
+              <div className="col-lg-2 col-md-4 col-6 d-flex align-items-center"></div>
+              <div className="col-lg-2 col-md-4 col-6 d-flex align-items-center"></div>
+              <div className="col-lg-2 col-md-4 col-6 d-flex align-items-center">
+                <img src="assets/img/clients/client-4.png" className="img-fluid" alt="" />
+              </div>
+              <div className="col-lg-2 col-md-4 col-6 d-flex align-items-center"></div>
+              <div className="col-lg-2 col-md-4 col-6 d-flex align-items-center"></div>
+            </div>
+          </div>
+        </section>
+        <section id="about" className="about">
+          <div className="container">
+            <div className="row content">
+              <div className="col-lg-6"></div>
+              <div className="col-lg-6 pt-4 pt-lg-0">
+                <p className="font-italic"><b>Mission :</b> To provide technology and services to farmers, merchants, and farm labourers to help them expand their business and provide them with a wider market. And to improve the present farming processes and to provide knowledge about recent agricultural issues.</p>
+                <p className="font-italic"><b>Vision :</b> To provide a helping hand to the farmers and farm labourers in improving their lives through the medium of technology, thereby, improving the Agricultural Sector in the Indian Economy.</p>
+                <ul>
+                  <li><i className="ri-check-double-line"></i> This is a model farmer management website application.</li>
+                  <li><i className="ri-check-double-line"></i> Agriculture Management System provides a concept of virtual agricultural trade to its users.</li>
+                  <li><i className="ri-check-double-line"></i> It helps the wholesalers and retailers in buying produce from a larger number of farmers.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="counts" className="counts">
+          <div className="container">
+            <div className="row counters">
+              <div className="col-lg-3 col-4 text-center">
+                <span data-toggle="counter-up">{/* PHP code here */}</span>
+                <p>Farmers</p>
+              </div>
+              <div className="col-lg-3 col-4 text-center">
+                <span data-toggle="counter-up">{/* PHP code here */}</span>
+                <p>Customers</p>
+              </div>
+              <div className="col-lg-3 col-4 text-center">
+                <span data-toggle="counter-up">{/* PHP code here */}</span>
+                <p>Market</p>
+              </div>
+              <div className="col-lg-3 col-4 text-center">
+                <span data-toggle="counter-up">{/* PHP code here */}</span>
+                <p>Workers</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="why-us" className="why-us">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-4 d-flex align-items-stretch" data-aos="fade-right">
+                <div className="content">
+                  <h3>Why choose this website?</h3>
+                  <p>There are several benefits to using agricultural e-commerce websites for farmers, businesses, and consumers, including.......</p>
+                  <div className="text-center">
+                    <a href="benifit.php" className="more-btn">Learn More <i className="bx bx-chevron-right"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-8 d-flex align-items-stretch">
+                <div className="icon-boxes d-flex flex-column justify-content-center">
+                  <div className="row">
+                    <div className="col-xl-4 d-flex align-items-stretch">
+                      <div className="icon-box mt-4 mt-xl-0">
+                        <h4>Customer</h4>
+                        <i className="bx bx-group"></i>
+                        <p>Are you willing to purchase products from Farmer's?<br /> <b>Login / Register as Customer</b></p>
+                        <div className="text-center"><button type="button" className="btn btn-info" onClick={() => window.location='customerreglogin.php'}>Click Here</button></div>
+                      </div>
+                    </div>
+                    <div className="col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+                      <div className="icon-box mt-4 mt-xl-0">
+                        <h4>Farmer</h4>
+                        <i className="bx bx-donate-heart"></i>
+                        <p>Online Market where you can Sell fruits & vegetables, agri produce, etc...<br /><b>Login / Register as Farmer</b></p>
+                        <div className="text-center"><button type="button" className="btn btn-info" onClick={() => window.location='farmerreglogin.php'}>Click Here</button></div>
+                      </div>
+                    </div>
+                    <div className="col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
+                      <div className="icon-box mt-4 mt-xl-0">
+                        <h4>Worker</h4>
+                        <i className="bx bx-walk"></i>
+                        <p>Find Agriculture Jobs and opportunities.. Farm Worker jobs available here...<br /> <b>Login / Register as Worker</b></p>
+                        <div className="text-center"><button type="button" className="btn btn-info" onClick={() => window.location='workerreglogin.php'}>Click Here</button></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="team" className="team">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-4">
+                <div className="section-title" data-aos="fade-right">
+                  <h2>Team</h2>
+                  <p>This is our team members</p>
+                </div>
+              </div>
+              <div className="col-lg-8">
+                <div className="row">
+                  <div className="col-lg-6">
+                    <div className="member" data-aos="zoom-in" data-aos-delay="100">
+                      <div className="pic"></div>
+                      <div className="member-info">
+                        <h4></h4>
+                        <div className="social">
+                          <a href=""></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-lg-6 mt-4 mt-lg-0">
+                    <div className="member">
+                      <div className="pic"></div>
+                      <div className="member-info">
+                        <h4></h4>
+                        <div className="social">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-lg-6 mt-4">
+                    <div className="member">
+                      <div className="pic"></div>
+                      <div className="member-info">
+                        <div className="social">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-lg-6 mt-4">
+                    <div className="member">
+                      <div className="pic"></div>
+                      <div className="member-info">
+                        <div className="social">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-lg-6 mt-4">
+                    <div className="member">
+                      <div className="pic"></div>
+                      <div className="member-info">
+                        <div className="social">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
+  );
+}
+
+export default App;
